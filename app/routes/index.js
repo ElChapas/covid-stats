@@ -4,11 +4,11 @@ import RSVP from 'rsvp';
 export default class IndexRoute extends Route {
   async model() {
     // Fetching global records
-    let response = await fetch('http://api.coronastatistics.live/all');
+    let response = await fetch('https://corona.lmao.ninja/all');
     let globalData = await response.json();
     console.log(globalData);
     // Fetching countries records
-    response = await fetch('http://api.coronastatistics.live/countries');
+    response = await fetch('https://corona.lmao.ninja/countries');
         let countriesData = await response.json();
         /// Sorting countries by cases
         countriesData.sort((a,b) => {
