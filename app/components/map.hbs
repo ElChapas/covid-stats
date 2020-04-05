@@ -1,0 +1,72 @@
+<section class="card map">
+    <div id="map" class="map"></div>
+</section>
+
+<script 
+      async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAhOY5QJuCK3vykXe9qE4Gq8FUzuMbzwU4&callback=initMap"
+      type="text/javascript">
+</script>
+
+<script>
+    // Map is starting
+    function initMap() {
+        console.log('dasdsdad')
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 2,
+            center: {lat: 0, lng: 0}
+        });
+        // render circles with data
+        const popup = new window.google.maps.InfoWindow()
+        renderData(map,popup)
+    }
+
+    // fetching countries data
+    async function getCountriesData() {
+        const response = await fetch('https://wuhan-coronavirus-api.laeyoung.endpoint.ainize.ai/jhu-edu/latest');
+        const data = await response.json()
+        return data
+    }
+
+
+    // Rendering circles with counties data
+    async function renderData(map,popup) {
+        //Waiting for data 
+       const data =  await getCountriesData()
+
+
+        // print every circle on the map
+        data.forEach(country => {
+            if (country.provincestate == ""){
+                
+                const marker = new google.maps.Marker({
+                position: 
+                    {
+                        lat: country.location.lat,
+                        lng: country.location.lng
+                    },
+                map: map
+                })
+                marker.addListener('click', () => {
+                    popup.setContent(renderCountriesInfo(country))
+                    popup.open(map,marker)
+                })
+            }
+        })
+    }
+
+    function renderCountriesInfo({ confirmed, deaths, recovered, provincestate, countryregion }){
+        return`
+            <div>
+                <p><Strong>${provincestate}-${countryregion}</Strong></p>
+                <p><Strong>Confirmed: </Strong>${confirmed}</p>
+                <p><Strong>Deaths: </Strong>${deaths}</p>
+                <p><Strong>Recovered: </Strong>${recovered}</p>
+            </div>
+         `
+    }
+
+</script>
+
+
+
+ 
