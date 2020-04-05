@@ -1,0 +1,117 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Roboto&display=swap');
+:root {
+    --main-blue: #21ABD8;
+    --main-red: #EB5569;
+    --main-green: #43C885;
+}
+body {
+    font-family: 'Montserrat',Arial, Helvetica, sans-serif;
+    background-color: #F2F2F2;
+    color: #707070;
+    margin: 0;
+    padding: 0;
+}
+
+.nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    box-shadow: 0 1px 6px 0 rgb(204, 204, 204);
+    margin-bottom: 1em;
+
+}
+
+.logo{
+    background: url(../assets/images/virus.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 100px;
+    width: 100px;
+    margin: 5px;
+
+}
+.nav span {
+    font-size: 3em;
+    margin-left: 5px;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(14, 1fr);
+    grid-column-gap: 10px;
+    grid-row-gap: 10px;
+}
+
+.today_states {
+    grid-column: 3/7;
+    align-self: center;
+}
+.card {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    background-color: white;
+    height: 3em;
+    font-size: 2em;
+    border-radius: 10px;
+    box-shadow: 0 1px 6px 0 rgb(204, 204, 204);
+}
+.total_infections {
+    margin-bottom: 10px;
+}
+.total_infections span{
+    color: var(--main-blue) ;
+}
+.total_deaths{
+    margin-bottom: 10px;
+}
+.total_deaths span{
+    color: var(--main-red) ;
+}
+.total_recoveries{
+    margin-bottom: 10px;
+}
+.total_recoveries span{
+    color: var(--main-green) ;
+}
+
+.map {
+    grid-column: 7/13;
+    display: flex;
+    height: 100%;
+}
+#map {
+    height: 100%;  /* The height is 400 pixels */
+    width: 100%;  /* The width is the width of the web page */
+}
+
+.timeline {
+    grid-column: 3/7;
+    display: flex;
+    height: 100%;
+}
+
+.countries_data {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    grid-column: 7/13;
+    overflow: scroll;
+    height: 500px;
+    font-size: 1em;
+    padding: 1em;
+}
+.card-item {
+    background-color: rgb(245, 245, 245);
+    margin: 0;
+}
+.card-item .country{
+   font-weight: bold;
+}
+.card-item .deaths{
+   color: var(--main-red);
+}
+.card-item .cases{
+    color: var(--main-blue);
+}
