@@ -16,11 +16,10 @@
 
 ## Screenshots
 
-
-![Homepage](screenshots/Chart.png)
-![Homepage](screenshots/screenshot1.png)
-![Homepage](screenshots/Map.png)
-![Homepage](screenshots/Country.png)
+![Homepage](screenshots/Screenshot_1.png)
+![Chart](screenshots/Chart.png)
+![Map](screenshots/Map.png)
+![Country](screenshots/Country.png)
 
 ## Build the Ember project
 
