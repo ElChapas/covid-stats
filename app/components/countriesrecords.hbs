@@ -1,0 +1,14 @@
+<section class="card countries_data">   
+
+    {{#each @countriesData as |data|}}
+        <hr/>
+        <p class="card-item ">
+        <LinkTo @route="country" @model={{data.country}} class="a">
+            <img src="{{data.countryInfo.flag}}" height="25px" alt="">
+        </LinkTo>
+            <span class="country">{{data.country}}</span>
+            <span class="cases">Cases: {{data.cases}}</span>
+            <span class="deaths">Deaths: {{data.cases}} </span>
+        </p>
+    {{/each}}
+</section>

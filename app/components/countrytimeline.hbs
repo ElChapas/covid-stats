@@ -1,25 +1,25 @@
-<section class="card {{@class}}">
-
-    <canvas id="myChart2" width="400px" height="400px"></canvas>
-
+<section class="{{@class}}">
+        <h2 id="country" data-country="{{@country}}">{{@country}} Timeline</h2>
+        <canvas id="myChart" width="500px" height="200px"></canvas>
 </section>
+
 
 <script>
 
-    chartDays = [];
-    chartCases = [];
-    chartDeaths = [];
-    chartRecovered = [];
-
+    let chartDays = [];
+    let chartCases = [];
+    let chartDeaths = [];
+    let chartRecovered = [];
+    const country = document.getElementById('country').dataset.country
+  
     async function getData() {
-        let response = await fetch('http://api.coronastatistics.live/timeline/global');
+        let response = await fetch(`http://api.coronastatistics.live/timeline/${country}`);
         let data = await response.json();
-        
-        for (i = 0; i<Object.keys(data).length; i+=2){
-            chartDays.push(Object.entries(data)[i][0]);
-            chartCases.push(Object.entries(data)[i][1].cases)
-            chartDeaths.push(Object.entries(data)[i][1].deaths)
-            chartRecovered.push(Object.entries(data)[i][1].recovered)
+        for (i = 0; i<Object.keys(data.data.timeline).length; i+=1){
+            chartDays.push(data.data.timeline[i].date);
+            chartCases.push(data.data.timeline[i].cases);
+            chartDeaths.push(data.data.timeline[i].deaths);
+            chartRecovered.push(data.data.timeline[i].recovered);
         }
         
         return data
@@ -27,7 +27,7 @@
     chartIt();
     async function chartIt() {
         await getData()
-        let ctx = document.getElementById('myChart2').getContext("2d");
+        let ctx = document.getElementById('myChart').getContext("2d");
         
         var myChart = new Chart(ctx,{
             type: "line",
@@ -61,10 +61,10 @@
                             beginAtZero:true
                         }
                     }]
-                }
+                },
+                
             }
         })
     }
-
 
 </script>

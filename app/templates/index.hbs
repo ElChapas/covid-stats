@@ -1,6 +1,6 @@
 <div class="container">
-    
     <Globalrecords @data = {{@model.globalData}} />
     <Map/>
-    <Timelinerecords/>
+    <Timelinerecords @class="timeline"/>
+    <Countriesrecords @countriesData = {{@model.countriesData}}/>
 </div>

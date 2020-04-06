@@ -7,18 +7,21 @@ export default class IndexRoute extends Route {
     let response = await fetch('https://corona.lmao.ninja/all');
     let globalData = await response.json();
     console.log(globalData);
+
     // Fetching countries records
     response = await fetch('https://corona.lmao.ninja/countries');
-        let countriesData = await response.json();
-        /// Sorting countries by cases
-        countriesData.sort((a,b) => {
-            if (a.cases > b.cases) {
-                return -1
-            } else {
-                return 1
-            }
-        })
-        // return fetched data to use with "@model. --"
+    let countriesData = await response.json();
+    /// Sorting countries by cases
+    countriesData.sort((a,b) => {
+      if (a.cases > b.cases) {
+        return -1
+      } else {
+        return 1
+      }
+    })
+
+
+    // return fetched data to use with "@model. --"
     return RSVP.hash({
       globalData: globalData,
       countriesData: countriesData
