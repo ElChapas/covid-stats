@@ -24,11 +24,11 @@
 ## Build the Ember project
 
 ```sh
-npm build
+npm i
 ```
 
 ```sh
-ember serve
+npm run start
 ```
 
 # API Endpoints
