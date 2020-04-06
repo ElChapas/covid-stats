@@ -13,7 +13,7 @@ body {
     padding: 0;
 }
 hr {
-    border: 1px solid var(--main-black);
+    border: 0.5px solid var(--main-black);
     width: 100%;
 }
 .nav {
@@ -50,6 +50,9 @@ hr {
 .today_states {
     grid-column: 3/7;
 }
+.today_states .card{
+    padding-left: 15px;
+}
 .card {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -60,11 +63,14 @@ hr {
     border-radius: 10px;
     box-shadow: 0 1px 6px 0 rgb(204, 204, 204);
 }
+.today_states  span{
+    padding-left: 5px;
+}
 .total_infections {
     margin-bottom: 10px;
 }
 .total_infections span{
-    color: var(--main-blue) ;
+    color: var(--main-blue);
 }
 .total_deaths{
     margin-bottom: 10px;
@@ -76,7 +82,7 @@ hr {
     margin-bottom: 10px;
 }
 .total_recoveries span{
-    color: var(--main-green) ;
+    color: var(--main-green);
 }
 
 .map {
@@ -105,11 +111,29 @@ hr {
     height: 400px;
     font-size: 1em;
     padding: 1em;
+    overflow-x: hidden;
+}
+.xd {
+    display: flex;
+    
 }
 .card-item {
-    background-color: rgb(245, 245, 245);
+    
+    width: 100%;
+    height: 50px;
     margin: 0;
+    font-size: 1em;
 }
+.card-item:hover {
+    background-color: rgb(245, 245, 245);
+}
+.flag {
+    height: 25px;
+    border-radius: 25px;
+    justify-self: flex-start;
+    margin-right: 1em;
+}
+
 .card-item .country{
    font-weight: bold;
 }
@@ -146,4 +170,21 @@ hr {
     text-decoration: none;
     color: var(--main-black);
 }
+
+.country_chart {
+    display:  flex;
+    align-items: center;
+    justify-content: center;
+}
 /* COUNTRY PAGE */
+
+footer {
+    background-color: white;
+    display: flex;
+    justify-content: flex-end;
+    font-size: 1.2em;
+}
+footer a{
+    text-decoration: none;
+    color: var(--main-black);
+}

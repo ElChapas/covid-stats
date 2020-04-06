@@ -1,9 +1,7 @@
 
 <div class="container">
-   
 
     <Globalrecords @data = {{@model}} />
-    <Countrytimeline @class="timeline_country" @country = {{@model.country}}/>
-
+    <Countrytimeline @class="timeline_country" @country = {{@model.country}} @flag = {{model.countryInfo.flag}}/>
 
 </div>

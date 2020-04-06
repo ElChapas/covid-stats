@@ -1,20 +1,29 @@
+{{!-- Country Timeline --}}
 <section class="{{@class}}">
+    <div class="country_chart">
+        <img src="{{@flag}}" alt="" height="50px">
         <h2 id="country" data-country="{{@country}}">{{@country}} Timeline</h2>
+    </div>
         <canvas id="myChart" width="500px" height="200px"></canvas>
 </section>
 
 
 <script>
-
-    let chartDays = [];
-    let chartCases = [];
-    let chartDeaths = [];
-    let chartRecovered = [];
-    const country = document.getElementById('country').dataset.country
-  
+    chartDays = [];
+    chartCases = [];
+    chartDeaths = [];
+    chartRecovered = [];
+    var country = document.getElementById('country').dataset.country
+    if (country == "USA"){
+        country = "US"
+    }
+    console.log(country)
     async function getData() {
         let response = await fetch(`http://api.coronastatistics.live/timeline/${country}`);
         let data = await response.json();
+
+        console.log(data)
+        
         for (i = 0; i<Object.keys(data.data.timeline).length; i+=1){
             chartDays.push(data.data.timeline[i].date);
             chartCases.push(data.data.timeline[i].cases);
