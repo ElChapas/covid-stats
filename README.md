@@ -16,8 +16,9 @@
 
 ## Screenshots
 
-![Homepage](screenshots/screenshot1.png)
+
 ![Homepage](screenshots/Chart.png)
+![Homepage](screenshots/screenshot1.png)
 ![Homepage](screenshots/Map.png)
 ![Homepage](screenshots/Country.png)
 
